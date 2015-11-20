@@ -1,0 +1,32 @@
+{
+	"name": "mothepro/University-Database",
+	"description": "Assignment for Senior Database Class, Web Proect using sample databse",
+    "authors": [
+        {
+            "name": "Maurice Prosper",
+            "email": "maurice.prosper@ttu.edu"
+        },
+		{
+			"name": "kace echo",
+			"email": "mark.reyes@ttu.edu"
+		}
+    ],
+    "require": {
+        "slim/slim": "2.*",
+        "slim/extras": "~2.0",
+        "slim/views": "0.1.*",
+		"twig/twig": "1.*",
+		"apigen/apigen": "*",
+        "propel/propel": "~2.0@dev",
+        "mothepro/mo-router": "dev-master"
+	},
+    "require-dev": {
+		"mothepro/mo-compiler":	"dev-master"
+    },
+
+    "autoload": {
+		"psr-0": {
+			"App"	: "lib/"
+		}
+	}
+}
