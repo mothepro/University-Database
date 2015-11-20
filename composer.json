@@ -1,6 +1,7 @@
 {
 	"name": "mothepro/University-Database",
 	"description": "Assignment for Senior Database Class, Web Proect using sample databse",
+	"license": "GPL-2.0",
     "authors": [
         {
             "name": "Maurice Prosper",
