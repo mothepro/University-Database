@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database name="university" defaultIdMethod="native">
+	<table name="student">
+		<column name="bannerNumber" primaryKey="true" required="true" type="INTEGER" size="5" autoIncrement="true"/>
+		<column name="adviserID" required="true" type="BIGINT"/>
+		<column name="firstName" required="true" size="25" />
+		<column name="lastName" required="true" size="25" />
+		<column name="street" required="true" size="50" />
+		<column name="city" required="true" size="50" />
+		<column name="postCode" required="true" size="16" />
+		<column name="phoneNO" required="true" type="CHAR" size="10" />
+		<column name=""
+	</table>
+</database>
