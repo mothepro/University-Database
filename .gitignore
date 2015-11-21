@@ -4,3 +4,4 @@
 /config/propel.yml
 /lib/App/Entity/
 /propel.php
+/routes.ser

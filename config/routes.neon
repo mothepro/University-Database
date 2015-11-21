@@ -1,0 +1,30 @@
+home:
+	route: /
+	method: GET
+	callable:
+		- \App\Query
+		- one
+	
+	queries:
+
+		middleware:
+			- \App\Query
+			- show
+
+		one:
+			route: one
+			method: GET
+			callable:
+				- \App\Query
+				- one
+			params:
+				tpl: q1
+
+		two:
+			route: two
+			method: GET
+			callable:
+				- \App\Query
+				- two
+			params:
+				tpl: q2
