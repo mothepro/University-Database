@@ -18,7 +18,7 @@ propel:
         connections:
             university:
                 adapter: mysql
-                dsn: mysql:host=localhost;dbname=ttu
+                dsn: mysql:host=localhost;dbname=db5
                 user: root
                 settings:
                     charset: utf8
