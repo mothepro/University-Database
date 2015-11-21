@@ -29,8 +29,8 @@
 
 	<table name="Adviser">
 		<column name="id" primaryKey="true" required="true" type="INTEGER" autoIncrement="true"/>
-		<column name="deptNO" required="true" size="4"/>
-		<column name="positionID" required="true" size="4"/>
+		<column name="deptNO" required="true" type="SMALLINT"/>
+		<column name="positionID" required="true" type="SMALLINT"/>
 		<column name="firstName" required="true" size="25"/>
 		<column name="lastName" required="true" size="25"/>
 		<column name="phoneNO" required="true" type="CHAR" size="10"/>
