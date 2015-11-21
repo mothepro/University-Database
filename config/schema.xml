@@ -9,6 +9,5 @@
 		<column name="city" required="true" size="50" />
 		<column name="postCode" required="true" size="16" />
 		<column name="phoneNO" required="true" type="CHAR" size="10" />
-		<column name=""
 	</table>
 </database>
