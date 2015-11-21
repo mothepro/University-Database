@@ -65,7 +65,7 @@
 	</table>
 
 	<table name="Department">
-		<column name="deptNO" primaryKey="true" required="true" type="SMALLINT"/>
+		<column name="deptNO" primaryKey="true" required="true" type="SMALLINT" autoIncrement="true"/>
 		<column name="deptName" required="true" size="50"/>
 	</table>
 
