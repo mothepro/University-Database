@@ -29,10 +29,16 @@
 			<reference local="adviserID" foreign="id"/>
 		</foreign-key>
 
-		<index name="StudentIndexes">
+		<index name="StudentIndex1">
   			<index-column name="firstName"/>
+  		</index>
+  		<index name="StudentIndex2">
   			<index-column name="lastName"/>
+  		</index>
+  		<index name="StudentIndex3">
   			<index-column name="status"/>
+  		</index>
+  		<index name="StudentIndex4">
   			<index-column name="year"/>
 		</index>
 
