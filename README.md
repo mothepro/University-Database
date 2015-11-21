@@ -1,5 +1,5 @@
 # University-Database
-Assignment for Senior Database Class, Web Proect using sample databse
+Assignment for Senior Database Class, Web Project using sample database.
 
 
 ## Building the Database
