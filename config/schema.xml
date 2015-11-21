@@ -13,7 +13,7 @@
 		<column name="phoneNO" required="true" type="CHAR" size="10"/>
 		<column name="email" required="true" size="50"/>
 		<column name="dob" required="true" type="DATE"/>
-		<column name="gender" required="true" type="CHAR" size="1"/>
+		<column name="gender" required="true" type="ENUM" valueSet="male, female"/>
 		<column name="nationality" required="true" size="25"/>
 		<column name="specialNeeds" required="false" size="250"/>
 		<column name="comments" required="false" size="250"/>
@@ -182,7 +182,7 @@
 		<column name="phoneNO" required="true" type="CHAR" size="10"/>
 		<column name="email" required="true" size="50"/>
 		<column name="dob" required="true" type="DATE"/>
-		<column name="gender" required="true" type="CHAR" size="1"/>
+		<column name="gender" required="true" type="ENUM" valueSet="male, female"/>
 		<column name="position" required="true" size="25"/>
 		<column name="location" required="true" size="25"/>
 	</table>
