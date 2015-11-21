@@ -17,14 +17,27 @@
 		<column name="nationality" required="true" size="25"/>
 		<column name="specialNeeds" required="false" size="250"/>
 		<column name="comments" required="false" size="250"/>
-		<column name="status" required="true" size="7"/>
+		<column name="status" required="true" type="ENUM" valueSet="placed, waiting"/>
 		<column name="major" required="true" size="25"/>
 		<column name="minor" required="true" size="25"/>
-		<column name="year" required="true" size="25"/>
+		<column name="year" required="true" type="ENUM" valueSet="first-year undergraduate, second-year undergraduate, third-year undergraduate, fourth-year undergraduate, fifth-year undergraduate, sixth-year undergraduate, graduate"/>
 
 		<foreign-key foreignTable="Adviser" name="Advise">
 			<reference local="adviserID" foreign="id"/>
 		</foreign-key>
+
+		<index name="StudentIndexes">
+  			<index-column name="firstName"/>
+  			<index-column name="lastName"/>
+  			<index-column name="status"/>
+  			<index-column name="year"/>
+		</index>
+
+		<unique name="StudentUniqueIndexes">
+  			<unique-column name="phoneNO"/>
+  			<unique-column name="email"/>
+  		</unique>
+
 	</table>
 
 	<table name="Adviser">
@@ -44,6 +57,11 @@
 		<foreign-key foreignTable="Position" name="EmployedAs">
 			<reference local="positionID" foreign="id"/>
 		</foreign-key>
+
+		<unique name="AdviserUniqueIndexes">
+  			<unique-column name="phoneNO"/>
+  			<unique-column name="email"/>
+  		</unique>
 	</table>
 
 	<table name="Department">
@@ -70,6 +88,10 @@
 		<foreign-key foreignTable="Student" name="Has">
 			<reference local="bannerNumber" foreign="bannerNumber"/>
 		</foreign-key>
+
+		<unique name="NOKUniqueIndexes">
+  			<unique-column name="phoneNO"/>
+  		</unique>
 	</table>
 
 	<table name="Course">
@@ -95,13 +117,18 @@
 		<foreign-key foreignTable="Course" name="Taken">
 			<reference local="courseNO" foreign="courseNO"/>
 		</foreign-key>
+
+		<unique name="SCUniqueIndexes">
+  			<unique-column name="phoneNO"/>
+  			<unique-column name="email"/>
+  		</unique>
 	</table>
 
 	<table name="Lease">
 		<column name="leaseNO" primaryKey="true" required="true" type="BIGINT" autoIncrement="true"/>
 		<column name="bannerNumber" required="true" type="BIGINT"/>
 		<column name="placeNO" required="true" type="INTEGER"/>
-		<column name="semesterDuration" required="true" size="25"/>
+		<column name="semesterDuration" required="true" type="ENUM" valueSet="1,2,summer,1-2,1-summer,summer-2"/>
 		<column name="moveInDate" required="true" type="DATE"/>
 		<column name="moveOutDate" required="false" type="DATE"/>
 
@@ -117,22 +144,30 @@
 	<table name="Invoice">
 		<column name="invoiceNO" primaryKey="true" required="true" type="BIGINT" autoIncrement="true"/>
 		<column name="leaseNO" required="true" type="BIGINT"/>
-		<column name="semester" required="true" size="25"/>
+		<column name="semester" required="true" type="ENUM" valueSet="1,2,summer,1-2,1-summer,summer-2"/>
 		<column name="paymentDue" required="true" type="DATE"/>
 		<column name="datePaid" required="true" type="DATE"/>
-		<column name="paymentMethod" required="true" size="25"/>
+		<column name="paymentMethod" required="true" type="ENUM" valueSet="check,cash,debit,credit,moneyorder,loan"/>
 		<column name="firstReminder" required="true" type="DATE"/>
 		<column name="secondReminder" required="false" type="DATE"/>
 		
 		<foreign-key foreignTable="Lease" name="Creates">
 			<reference local="leaseNO" foreign="leaseNO"/>
 		</foreign-key>
+
+		<index name="InvoiceIndexes">
+  			<index-column name="semester"/>
+  		</index>
 	</table>
 
 	<table name="Room">
 		<column name="placeNO" primaryKey="true" required="true" type="INTEGER" autoIncrement="true"/>
 		<column name="roomNO" required="true" type="INTEGER"/>
 		<column name="rentRate" required="true" type="FLOAT" scale="2"/>
+
+		<index name="RoomIndexes">
+  			<index-column name="rentRate"/>
+		</index>
 	</table>
 
 	<table name="Hall">
@@ -146,13 +181,17 @@
 		<foreign-key foreignTable="Staff" name="Manages">
 			<reference local="staffNO" foreign="staffNO"/>
 		</foreign-key>
+
+		<unique name="HallUniqueIndexes">
+  			<unique-column name="phoneNO"/>
+  		</unique>
 	</table>
 
 	<table name="Flat">
 		<column name="flatNO" primaryKey="true" required="true" type="INTEGER" autoIncrement="true"/>
 		<column name="street" required="true" size="50"/>
 		<column name="city" required="true" size="50"/>
-		<column name="numOfRooms" required="true" type="SMALLINT"/>
+		<column name="numOfRooms" required="true" type="ENUM" valueSet="3,4,5"/>
 	</table>
 
 	<table name="Inspection">
@@ -160,7 +199,7 @@
 		<column name="staffNO" required="true" type="INTEGER"/>
 		<column name="flatNO" primaryKey="true" required="true" type="INTEGER"/>
 		<column name="inspectionDate" required="true" type="DATE"/>
-		<column name="condition" required="true" size="3"/>
+		<column name="condition" required="true" type="ENUM" valueSet="yes,no"/>
 		<column name="comments" required="false" size="250"/>
 
 		<foreign-key foreignTable="Staff" name="Does">
@@ -183,9 +222,13 @@
 		<column name="email" required="true" size="50"/>
 		<column name="dob" required="true" type="DATE"/>
 		<column name="gender" required="true" type="ENUM" valueSet="male, female"/>
-		<column name="position" required="true" size="25"/>
-		<column name="location" required="true" size="25"/>
+		<column name="position" required="true" type="ENUM" valueSet="Hall Manager,Administrative Assistant, Cleaner, CA, RA, Student Assistant,Hospitality"/>
+		<column name="location" required="true" type="ENUM" valueSet="Residence Office, Hall"/>
+
+		<unique name="StaffUniqueIndexes">
+  			<unique-column name="phoneNO"/>
+  			<unique-column name="email"/>
+  		</unique>
 	</table>
 	
 </database>
-
