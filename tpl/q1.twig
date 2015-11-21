@@ -1,0 +1,16 @@
+{% extends 'body.twig' %}
+
+{% block title %}Query One{% endblock %}
+
+{% block body %}
+	<ul>
+	{% for Hall in data %}
+		<li>
+		Hall #{{ Hall.Hallno }} is managed by {{ Hall.Staff.Firstname }} {{ Hall.Staff.Lastname }}, you may reach {{ Hall.Staff.Gender is same as('male') ? 'him' : 'her' }} at {{ Hall.Staff.Phoneno }}.
+		</li>
+	{% else %}
+		<li>No Halls found</li>
+	{% endfor %}
+	</ul>
+{% endblock %}
+	
