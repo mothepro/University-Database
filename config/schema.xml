@@ -1,13 +1,191 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <database name="university" defaultIdMethod="native">
-	<table name="student">
-		<column name="bannerNumber" primaryKey="true" required="true" type="INTEGER" size="5" autoIncrement="true"/>
-		<column name="adviserID" required="true" type="BIGINT"/>
-		<column name="firstName" required="true" size="25" />
-		<column name="lastName" required="true" size="25" />
-		<column name="street" required="true" size="50" />
-		<column name="city" required="true" size="50" />
-		<column name="postCode" required="true" size="16" />
-		<column name="phoneNO" required="true" type="CHAR" size="10" />
+
+	<table name="Student">
+		<column name="bannerNumber" primaryKey="true" required="true" type="BIGINT" autoIncrement="true"/>
+		<column name="adviserID" required="true" type="INTEGER"/>
+		<column name="firstName" required="true" size="25"/>
+		<column name="lastName" required="true" size="25"/>
+		<column name="street" required="true" size="50"/>
+		<column name="city" required="true" size="50"/>
+		<column name="postCode" required="true" size="16"/>
+		<column name="phoneNO" required="true" type="CHAR" size="10"/>
+		<column name="email" required="true" size="50"/>
+		<column name="dob" required="true" type="DATE"/>
+		<column name="gender" required="true" type="CHAR" size="1"/>
+		<column name="nationality" required="true" size="25"/>
+		<column name="specialNeeds" required="false" size="250"/>
+		<column name="comments" required="false" size="250"/>
+		<column name="status" required="true" size="7"/>
+		<column name="major" required="true" size="25"/>
+		<column name="minor" required="true" size="25"/>
+		<column name="year" required="true" size="25"/>
+
+		<foreign-key foreignTable="Adviser" name="Advise">
+			<reference local="adviserID" foreign="id"/>
+		</foreign-key>
 	</table>
+
+	<table name="Adviser">
+		<column name="id" primaryKey="true" required="true" type="INTEGER" autoIncrement="true"/>
+		<column name="deptNO" required="true" size="4"/>
+		<column name="positionID" required="true" size="4"/>
+		<column name="firstName" required="true" size="25"/>
+		<column name="lastName" required="true" size="25"/>
+		<column name="phoneNO" required="true" type="CHAR" size="10"/>
+		<column name="email" required="true" size="50"/>
+		<column name="roomNO" required="true" type="INTEGER"/>
+
+		<foreign-key foreignTable="Department" name="WorksIn">
+			<reference local="deptNO" foreign="deptNO"/>
+		</foreign-key>
+
+		<foreign-key foreignTable="Position" name="EmployedAs">
+			<reference local="positionID" foreign="id"/>
+		</foreign-key>
+	</table>
+
+	<table name="Department">
+		<column name="deptNO" primaryKey="true" required="true" type="SMALLINT"/>
+		<column name="deptName" required="true" size="50"/>
+	</table>
+
+	<table name="Position">
+		<column name="id" primaryKey="true" required="true" type="SMALLINT"/>
+		<column name="positionName" required="true" size="50"/>
+	</table>
+
+	<table name="Next-Of-Kin">
+		<column name="id" primaryKey="true" required="true" type="INTEGER" autoIncrement="true"/>
+		<column name="bannerNumber" required="true" type="BIGINT"/>
+		<column name="firstName" required="true" size="25"/>
+		<column name="lastName" required="true" size="25"/>
+		<column name="relationship" required="true" size="25"/>
+		<column name="street" required="true" size="50"/>
+		<column name="city" required="true" size="50"/>
+		<column name="postCode" required="true" size="16"/>
+		<column name="phoneNO" required="true" type="CHAR" size="10"/>
+
+		<foreign-key foreignTable="Student" name="Has">
+			<reference local="bannerNumber" foreign="bannerNumber"/>
+		</foreign-key>
+	</table>
+
+	<table name="Course">
+		<column name="courseNO" primaryKey="true" required="true" type="BIGINT"/>
+		<column name="courseName" required="true" size="50"/>
+	</table>
+
+	<table name="StudentCourse">
+		<column name="bannerNumber" primaryKey="true" required="true" type="BIGINT"/>
+		<column name="courseNO" primaryKey="true" required="true" type="BIGINT"/>
+		<column name="semester" required="true" size="25"/>
+		<column name="year" required="true" type="CHAR" size="4"/>
+		<column name="instructor" required="true" size="50"/>
+		<column name="phoneNO" required="true" type="CHAR" size="10"/>
+		<column name="email" required="true" size="50"/>
+		<column name="classroomNO" required="true" type="INTEGER"/>
+		<column name="deptName" required="true" size="25"/>
+
+		<foreign-key foreignTable="Student" name="Takes">
+			<reference local="bannerNumber" foreign="bannerNumber"/>
+		</foreign-key>
+
+		<foreign-key foreignTable="Course" name="Taken">
+			<reference local="courseNO" foreign="courseNO"/>
+		</foreign-key>
+	</table>
+
+	<table name="Lease">
+		<column name="leaseNO" primaryKey="true" required="true" type="BIGINT" autoIncrement="true"/>
+		<column name="bannerNumber" required="true" type="BIGINT"/>
+		<column name="placeNO" required="true" type="INTEGER"/>
+		<column name="semesterDuration" required="true" size="25"/>
+		<column name="moveInDate" required="true" type="DATE"/>
+		<column name="moveOutDate" required="false" type="DATE"/>
+
+		<foreign-key foreignTable="Student" name="Signs">
+			<reference local="bannerNumber" foreign="bannerNumber"/>
+		</foreign-key>
+
+		<foreign-key foreignTable="Room" name="ContractedBy">
+			<reference local="placeNO" foreign="placeNO"/>
+		</foreign-key>		
+	</table>
+
+	<table name="Invoice">
+		<column name="invoiceNO" primaryKey="true" required="true" type="BIGINT" autoIncrement="true"/>
+		<column name="leaseNO" required="true" type="BIGINT"/>
+		<column name="semester" required="true" size="25"/>
+		<column name="paymentDue" required="true" type="DATE"/>
+		<column name="datePaid" required="true" type="DATE"/>
+		<column name="paymentMethod" required="true" size="25"/>
+		<column name="firstReminder" required="true" type="DATE"/>
+		<column name="secondReminder" required="false" type="DATE"/>
+		
+		<foreign-key foreignTable="Lease" name="Creates">
+			<reference local="leaseNO" foreign="leaseNO"/>
+		</foreign-key>
+	</table>
+
+	<table name="Room">
+		<column name="placeNO" primaryKey="true" required="true" type="INTEGER" autoIncrement="true"/>
+		<column name="roomNO" required="true" type="INTEGER"/>
+		<column name="rentRate" required="true" type="FLOAT" scale="2"/>
+	</table>
+
+	<table name="Hall">
+		<column name="hallNO" primaryKey="true" required="true" type="INTEGER" autoIncrement="true"/>
+		<column name="staffNO" required="true" type="INTEGER"/>
+		<column name="street" required="true" size="50"/>
+		<column name="city" required="true" size="50"/>
+		<column name="postCode" required="true" size="16"/>
+		<column name="phoneNO" required="true" type="CHAR" size="10"/>
+
+		<foreign-key foreignTable="Staff" name="Manages">
+			<reference local="staffNO" foreign="staffNO"/>
+		</foreign-key>
+	</table>
+
+	<table name="Flat">
+		<column name="flatNO" primaryKey="true" required="true" type="INTEGER" autoIncrement="true"/>
+		<column name="street" required="true" size="50"/>
+		<column name="city" required="true" size="50"/>
+		<column name="numOfRooms" required="true" type="SMALLINT"/>
+	</table>
+
+	<table name="Inspection">
+		<column name="inspectionNO" primaryKey="true" required="true" type="BIGINT" autoIncrement="true"/>
+		<column name="staffNO" required="true" type="INTEGER"/>
+		<column name="flatNO" primaryKey="true" required="true" type="INTEGER"/>
+		<column name="inspectionDate" required="true" type="DATE"/>
+		<column name="condition" required="true" size="3"/>
+		<column name="comments" required="false" size="250"/>
+
+		<foreign-key foreignTable="Staff" name="Does">
+			<reference local="staffNO" foreign="staffNO"/>
+		</foreign-key>
+
+		<foreign-key foreignTable="Flat" name="Gets">
+			<reference local="flatNO" foreign="flatNO"/>
+		</foreign-key>
+	</table>
+
+	<table name="Staff">
+		<column name="staffNO" primaryKey="true" required="true" type="INTEGER" autoIncrement="true"/>
+		<column name="firstName" required="true" size="25"/>
+		<column name="lastName" required="true" size="25"/>
+		<column name="street" required="true" size="50"/>
+		<column name="city" required="true" size="50"/>
+		<column name="postCode" required="true" size="16"/>
+		<column name="phoneNO" required="true" type="CHAR" size="10"/>
+		<column name="email" required="true" size="50"/>
+		<column name="dob" required="true" type="DATE"/>
+		<column name="gender" required="true" type="CHAR" size="1"/>
+		<column name="position" required="true" size="25"/>
+		<column name="location" required="true" size="25"/>
+	</table>
+	
 </database>
+
