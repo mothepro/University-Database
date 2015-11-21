@@ -17,14 +17,9 @@
         "slim/extras": "~2.0",
         "slim/views": "0.1.*",
 		"twig/twig": "1.*",
-		"apigen/apigen": "*",
         "propel/propel": "~2.0@dev",
         "mothepro/mo-router": "dev-master"
 	},
-    "require-dev": {
-		"mothepro/mo-compiler":	"dev-master"
-    },
-
     "autoload": {
 		"psr-0": {
 			"App"	: "lib/"
