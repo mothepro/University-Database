@@ -33,8 +33,10 @@
   			<index-column name="year"/>
 		</index>
 
-		<unique name="StudentUniqueIndexes">
+		<unique name="StudentUniquePhone">
   			<unique-column name="phoneNO"/>
+		</unique>
+		<unique name="StudentUniqueEmail">
   			<unique-column name="email"/>
   		</unique>
 
@@ -58,8 +60,10 @@
 			<reference local="positionID" foreign="id"/>
 		</foreign-key>
 
-		<unique name="AdviserUniqueIndexes">
+		<unique name="AdviserUniquePhone">
   			<unique-column name="phoneNO"/>
+		</unique>
+		<unique name="AdviserUniqueEmail">
   			<unique-column name="email"/>
   		</unique>
 	</table>
@@ -118,8 +122,10 @@
 			<reference local="courseNO" foreign="courseNO"/>
 		</foreign-key>
 
-		<unique name="SCUniqueIndexes">
+		<unique name="SCUniquePhone">
   			<unique-column name="phoneNO"/>
+		</unique>
+		<unique name="SCUniqueEmail">
   			<unique-column name="email"/>
   		</unique>
 	</table>
@@ -225,8 +231,10 @@
 		<column name="position" required="true" type="ENUM" valueSet="Hall Manager,Administrative Assistant, Cleaner, CA, RA, Student Assistant,Hospitality"/>
 		<column name="location" required="true" type="ENUM" valueSet="Residence Office, Hall"/>
 
-		<unique name="StaffUniqueIndexes">
+		<unique name="StaffUniquePhone">
   			<unique-column name="phoneNO"/>
+		</unique>
+		<unique name="StaffUniqueEmail">
   			<unique-column name="email"/>
   		</unique>
 	</table>
