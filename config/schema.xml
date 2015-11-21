@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<database name="university" defaultIdMethod="native">
+<database name="university" defaultIdMethod="native"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:noNamespaceSchemaLocation="http://xsd.propelorm.org/1.6/database.xsd"
+  namespace="App\Entity">
 
 	<table name="Student">
 		<column name="bannerNumber" primaryKey="true" required="true" type="BIGINT" autoIncrement="true"/>
