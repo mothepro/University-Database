@@ -16,6 +16,10 @@ Now build the models
 `$ vendor/bin/propel model:build --schema-dir config/ --output-dir lib/`
 
 
-Finnaly generate the propel connection file to be included by the index
+Afterwards, generate the propel connection file to be included by the index
 
 `$ vendor/bin/propel config:convert -n --config-dir config/ --output-dir . --output-file "propel.php"`
+
+Finally, Routes should be built at compile time using
+
+`$ vendor/bin/build_routes slim config/routes.neon routes.ser`
