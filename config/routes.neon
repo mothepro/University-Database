@@ -37,3 +37,12 @@ home:
 				- six
 			params:
 				tpl: q6
+
+		eight:
+			route: eight
+			method: GET
+			callable:
+				- \App\Query
+				- eight
+			params:
+				tpl: q8

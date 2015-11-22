@@ -37,6 +37,15 @@ abstract class Query {
 	}
 	
 	/**
+	 * Students on wiatlist
+	 * @return Student[]
+	 */
+	public static function eight() {
+		return \App\Entity\StudentQuery::create()
+			->filterByStatus(Entity\Map\StudentTableMap::COL_STATUS_WAITING);
+	}
+	
+	/**
 	 * Show the home page template
 	 */
 	public static function home() {
