@@ -28,3 +28,12 @@ home:
 				- three
 			params:
 				tpl: q3
+
+		six:
+			route: six
+			method: GET
+			callable:
+				- \App\Query
+				- six
+			params:
+				tpl: q6

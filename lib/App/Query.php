@@ -28,6 +28,15 @@ abstract class Query {
 	}
 	
 	/**
+	 * Report of inspections with bad condition
+	 * @return Inspection[]
+	 */
+	public static function six() {
+		return \App\Entity\InspectionQuery::create()
+			->filterByCondition(Entity\Map\InspectionTableMap::COL_CONDITION_NO);
+	}
+	
+	/**
 	 * Show the home page template
 	 */
 	public static function home() {

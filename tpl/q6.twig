@@ -1,0 +1,31 @@
+{% extends 'body.twig' %}
+
+{% block title %}Query Six{% endblock %}
+
+{% block body %}
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>Inspection Number</th>
+				<th>Staff Number</th>
+				<th>Flat Number</th>
+				<th>Date</th>
+				<th>Satisfactory</th>
+				<th>Comments</th>
+			</tr>
+		</thead>
+		<tbody>
+		{% for inspection in data %}
+			<tr>
+				<td>{{ inspection.inspectionNO }}</td>
+				<td>{{ inspection.staffNO }}</td>
+				<td>{{ inspection.flatNO }}</td>
+				<td>{{ inspection.inspectionDate | date("F j\\<\\s\\u\\p\\>S\\<\\/\\s\\u\\p\\>")  | raw }}</td>
+				<td>{{ inspection.condition }}</td>
+				<td>{{ inspection.comments }}</td>
+			</tr>
+		{% endfor %}
+		</tbody>
+	</table>
+{% endblock %}
+	
