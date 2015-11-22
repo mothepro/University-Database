@@ -19,15 +19,21 @@ abstract class Query {
 	}
 	
 	/**
-	 * Report of Halls and their Managers
-	 * @return Hall[]
+	 * Report of Leases in summer
+	 * @return Lease[]
 	 */
-	public static function two() {
-		return \App\Entity\HallQuery::create()
-			->joinWith('Hall.Staff')
-			->find()->toArray();
+	public static function three() {
+		return \App\Entity\LeaseQuery::create()
+			->filterBySemesterduration(Entity\Map\LeaseTableMap::COL_SEMESTERDURATION_SUMMER);
 	}
 	
+	/**
+	 * Show the home page template
+	 */
+	public static function home() {
+		$app = \Slim\Slim::getInstance();
+		$app->render('home.twig');
+	}
 	
 	/**
 	 * We are going to run the API command,
@@ -48,10 +54,9 @@ abstract class Query {
 				$app->response->setStatus(500);
 			}
 
-			if($ret) { // template
-				$app->view()->set('data', $ret);
-				$app->render( $route->getParam('tpl') . '.twig');
-			}
+			// template
+			$app->view()->set('data', $ret);
+			$app->render( $route->getParam('tpl') . '.twig');
 		});
 	}
 }

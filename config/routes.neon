@@ -3,7 +3,7 @@ home:
 	method: GET
 	callable:
 		- \App\Query
-		- one
+		- home
 	
 	queries:
 
@@ -20,11 +20,11 @@ home:
 			params:
 				tpl: q1
 
-		two:
-			route: two
+		three:
+			route: three
 			method: GET
 			callable:
 				- \App\Query
-				- two
+				- three
 			params:
-				tpl: q2
+				tpl: q3

@@ -1,0 +1,31 @@
+{% extends 'body.twig' %}
+
+{% block title %}Query Three{% endblock %}
+
+{% block body %}
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>Lease Number</th>
+				<th>Banner Number</th>
+				<th>Place Number</th>
+				<th>During Semester</th>
+				<th>Move In Date</th>
+				<th>Move Out Date</th>
+			</tr>
+		</thead>
+		<tbody>
+		{% for lease in data %}
+			<tr>
+				<td>{{ lease.leaseNO }}</td>
+				<td>{{ lease.bannerNumber }}</td>
+				<td>{{ lease.placeNo }}</td>
+				<td>{{ lease.semesterDuration }}</td>
+				<td>{{ lease.moveInDate | date("F j\\<\\s\\u\\p\\>S\\<\\/\\s\\u\\p\\>")  | raw }}</td>
+				<td>{{ lease.moveOutDate | date("F j\\<\\s\\u\\p\\>S\\<\\/\\s\\u\\p\\>") | raw }}</td>
+			</tr>
+		{% endfor %}
+		</tbody>
+	</table>
+{% endblock %}
+	
