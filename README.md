@@ -1,6 +1,10 @@
 # University-Database
 Assignment for Senior Database Class, Web Project using sample database.
 
+## Installing the Application
+Clone the repo to the folder you want to host the project.
+
+Install the packages with composer using `composer install`
 
 ## Building the Database
 First build the sql files
