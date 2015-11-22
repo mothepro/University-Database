@@ -1,0 +1,35 @@
+{% extends 'body.twig' %}
+
+{% block title %}Query Six{% endblock %}
+
+{% block body %}
+	<h2>Adviser for {{ data.student.firstName }} {{ data.student.lastName }}</h2>
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Department Number</th>
+				<th>Position ID</th>
+				<th>First Name</th>
+				<th>Last Name</th>
+				<th>Phone Number</th>
+				<th>Email</th>
+				<th>Room Number</th>
+			</tr>
+		</thead>
+		<tbody>
+		{% for adviser in data.advisers %}
+			<tr>
+				<td>{{ adviser.id }}</td>
+				<td>{{ adviser.deptNO }}</td>
+				<td>{{ adviser.positionID }}</td>
+				<td>{{ adviser.firstName }}</td>
+				<td>{{ adviser.lastName }}</td>
+				<td>{{ adviser.phoneNO }}</td>
+				<td>{{ adviser.email }}</td>
+				<td>{{ adviser.roomNO }}</td>
+			</tr>
+		{% endfor %}
+		</tbody>
+	</table>
+{% endblock %}

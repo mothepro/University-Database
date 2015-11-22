@@ -46,6 +46,18 @@ abstract class Query {
 	}
 	
 	/**
+	 * Adivsors to Kace
+	 * @return Student[]
+	 */
+	public static function ten() {
+		$ret['student'] = \App\Entity\StudentQuery::create()->findPk(1);
+		$ret['advisers'] = \App\Entity\AdviserQuery::create()
+			->filterByStudent($ret['student']);
+		
+		return $ret;
+	}
+	
+	/**
 	 * Show the home page template
 	 */
 	public static function home() {
