@@ -3,14 +3,26 @@
 {% block title %}Query One{% endblock %}
 
 {% block body %}
-	<ul>
-	{% for Hall in data %}
-		<li>
-		Hall #{{ Hall.Hallno }} is managed by {{ Hall.Staff.Firstname }} {{ Hall.Staff.Lastname }}, you may reach {{ Hall.Staff.Gender is same as('male') ? 'him' : 'her' }} at {{ Hall.Staff.Phoneno }}.
-		</li>
-	{% else %}
-		<li>No Halls found</li>
-	{% endfor %}
-	</ul>
+	<h2>Hall Managers</h2>
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>Hall Number</th>
+				<th>Manager First Name</th>
+				<th>Manager Last Name</th>
+				<th>Manager Phone Number</th>
+			</tr>
+		</thead>
+		<tbody>
+		{% for Hall in data %}
+			<tr>
+				<td>{{ Hall.Hallno }}</td>
+				<td>{{ Hall.Staff.Firstname }}</td>
+				<td>{{ Hall.Staff.Lastname }}</td>
+				<td>{{ Hall.Staff.Phoneno }}</td>
+			</tr>
+		{% endfor %}
+		</tbody>
+	</table>
 {% endblock %}
 	
