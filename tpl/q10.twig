@@ -26,7 +26,7 @@
 				<td>{{ adviser.firstName }}</td>
 				<td>{{ adviser.lastName }}</td>
 				<td>{{ adviser.phoneNO }}</td>
-				<td>{{ adviser.email }}</td>
+				<td><a href="mailto:{{ adviser.email }}">{{ adviser.email }}</a></td>
 				<td>{{ adviser.roomNO }}</td>
 			</tr>
 		{% endfor %}
