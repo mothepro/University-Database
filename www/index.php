@@ -7,12 +7,12 @@ $app = new \Slim\Slim;
 $app->router = unserialize( file_get_contents('../routes.ser') );
 
 // View
-$view = new \Slim\Views\Twig();
-$view->setTemplatesDirectory('../tpl');
-$view->parserExtensions = [
+$app
+	->view( new \Slim\Views\Twig() )
+	->setTemplatesDirectory('../tpl');
+$app->view()->parserExtensions = [
 	new \Slim\Views\TwigExtension(),
 ];
-$app->view( $view );
 
 // GO
 $app->run();
