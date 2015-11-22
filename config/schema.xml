@@ -87,7 +87,7 @@
 		<column name="positionName" required="true" size="50"/>
 	</table>
 
-	<table name="Next-Of-Kin">
+	<table name="NextOfKin">
 		<column name="id" primaryKey="true" required="true" type="INTEGER" autoIncrement="true"/>
 		<column name="bannerNumber" required="true" type="BIGINT"/>
 		<column name="firstName" required="true" size="25"/>
